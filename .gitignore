@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets
+.env
+.env.local
+*.secret
+*.pem
+*.key
+
+# Vector Databases & Local Stores
+chrome_lamgchain_db/
+chroma_db/
+*.sqlite3
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test & Coverage Artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Evaluation Reports (keep directory, ignore large generated runs)
+evals/reports/*.json
+!evals/reports/.gitkeep
+
+# Traces
+traces/*.json
+!traces/.gitkeep
