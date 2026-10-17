@@ -1,0 +1,33 @@
+name: CI & AI Evaluation Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov tabulate pydantic python-dotenv
+
+      - name: Run Unit & Regression Tests
+        run: |
+          pytest tests/ -v --cov=src
+
+      - name: Run AI Evaluation Benchmark Suite
+        run: |
+          python -m src.evals.runner --dataset evals/datasets/v1.jsonl --provider mock --enable-judge
